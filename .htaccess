@@ -1,0 +1,34 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^step/([^/]+)$ steps.php?step=$1    [L,QSA]
+
+#This is for user.php file
+RewriteRule ^user/(\d+)$ user.php?userID=$1    [L,QSA]
+RewriteRule ^user/([^/]+)$ user.php?webName=$1    [L,QSA]
+RewriteRule ^user/([^/]+)/([^/]+) user.php?view=$1&userID=$2   [L,QSA]
+#RewriteRule ^user/([0-9]+)/?$ user.php?userID=$1 [L,QSA]
+
+RewriteRule ^post/(\d+)$ post.php?postID=$1     [L,QSA]
+
+#This is for createevent.php file
+RewriteRule ^event/(\d+)$ event.php?eventID=$1     [L,QSA]
+RewriteRule ^event/([^/]+)$ createevent.php?menu=$1    [L,QSA]
+RewriteRule ^event/([^/]+)/([^/]+) createevent.php?view=$1&eid=$2     [L,QSA]
+RewriteRule ^create/([^/]+)/([^/]+) createevent.php?view=$1&uid=$2     [L,QSA]
+
+#This is for creategroup.php file
+RewriteRule ^create/([^/]+)$ creategroup.php?view=$1&eid=$2     [L,QSA]
+RewriteRule ^group/(\d+)$ group.php?groupID=$1     [L,QSA]
+
+RewriteRule ^question/([^/]+)/([^/]+) question.php?fqID=$1&view=$2     [L,QSA]
+RewriteRule ^edit/([^/]+)/([^/]+) question.php?answerID=$1&view=$2     [L,QSA]
+  		
+RewriteRule ^message/(\d+)$ message.php?uid=$1     [L,QSA]
+RewriteRule ^message/([^/]+)$ message.php?webName=$1    [L,QSA]
+RewriteRule ^discussion/(\d+)$ discussion.php?groupID=$1     [L,QSA]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^([^\.]+)$ $1.php [NC,L]
